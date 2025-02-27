@@ -8,11 +8,14 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     lsb-release
 
-# Install Docker CLI
-RUN apt-get update && apt-get install -y \
-    docker.io
+# Add Docker’s official GPG key
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
-# Install Docker daemon
+# Set up the stable repository
+RUN add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+# Install Docker CLI
 RUN apt-get update && apt-get install -y \
     docker-ce \
     docker-ce-cli \
