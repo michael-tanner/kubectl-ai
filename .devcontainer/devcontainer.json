@@ -14,5 +14,5 @@
             ]
         }
     },
-    "postCreateCommand": "kind create cluster"
+    "postCreateCommand": "dockerd & kind create cluster"
 }
